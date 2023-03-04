@@ -2,7 +2,7 @@ Mini Project
 #Language
 -Python
 
-#Topic
+#Topic options
 Chatbot Song Recommender System (https://www.crio.do/blog/python-projects-for-developers/)
 Housing Price Prediction (https://www.crio.do/blog/python-projects-for-beginners/)
 Password manager (own logic)
@@ -11,6 +11,11 @@ Online Employee Recruitment System Project in Python (https://nevonprojects.com/
 Decision Tree Based Tourism Recommendation System (https://nevonprojects.com/decision-tree-based-tourism-recommendation-system/)
 Some other projects (https://www.freeprojectz.com/python-projects)
 
+#Selected Topics
+Image Steganography
+
 #Group Members
 -Ashish Yadav
 -Srishti Shrivastava
+-Gauri Vispute
+-Vivek Tiwari
