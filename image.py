@@ -1,28 +1,25 @@
 from tkinter import *
 from tkinter import messagebox
 from argparse import FileType
-#from stegano import lsb
 from tkinter.filedialog import *
 from PIL import ImageTk,Image
-#from  stegano.lsbset import generators
 from stegano import lsb
 from tkinter import font as tkFont
 from stegano import exifHeader as aaa
 import os
 from subprocess import Popen
 
-
 def encode():
 	main.destroy()
 	enc=Tk()
 	enc.attributes("-fullscreen", True)
 	enc.wm_attributes('-transparentcolor')
-	img=ImageTk.PhotoImage(Image.open("bg2.jpg"))
-	fontl = tkFont.Font(family='Algerian', size=32)
+	img=ImageTk.PhotoImage(Image.open("bg_image.jpg"))
+	fontl = tkFont.Font(family='Bahnschrift', size=32)
 	label1=Label(enc,image=img)
 	label1.pack()
 
-	LabelTitle=Label(text="ENCODE",bg="red",fg="white",width=20)
+	LabelTitle=Label(text="Encode Image",bg="#F57F17",fg="white",width=20)
 	LabelTitle['font']=fontl
 	LabelTitle.place(relx=0.6, rely=0.1)
 
@@ -69,35 +66,31 @@ def encode():
 	def encode():
 		if secimg.get()=="jpeg":
 			inimage=fileopen
-			response=messagebox.askyesno("popup","do you want to encode")
+			response=messagebox.askyesno("popup","Do you want to encode?")
 			if response==1: 
 				aaa.hide(inimage,entrysave.get()+'.jpg',entrysecmes.get())
-				messagebox.showinfo("popup","successfully encode"+entrysave.get()+".jpeg")
-
+				messagebox.showinfo("popup","Successfully encoded"+entrysave.get()+".jpeg")
 
 			else:
-				messagebox.showwarning("popup","unsuccessful")
+				messagebox.showwarning("popup","Unsuccessful!")
 
 		if secimg.get()=="png":
 			inimage=fileopen
-			response=messagebox.askyesno("popup","do you want to encode")
+			response=messagebox.askyesno("popup","Do you want to encode?")
 			if response==1: 
 				lsb.hide(inimage,message=entrysecmes.get()).save(entrysave.get()+'.png')
-				messagebox.showinfo("popup","successfully encode to "+entrysave.get()+".png")
-
+				messagebox.showinfo("popup","Successfully encoded to "+entrysave.get()+".png")
 
 			else:
-				messagebox.showwarning("popup","unsuccessful")
+				messagebox.showwarning("popup","Unsuccessful!")
 		
 
 
 	def back():
 		enc.destroy()
-		#execfile('image steganography using lsb.py')
-		#os.system('python imagesteganographyusinglsb.py')
-		Popen('python steganography.py')
+		Popen('python image.py')
 
-	Button2 = Button(text="ENCODE",command=encode)
+	Button2 = Button(text="Encode",command=encode)
 	Button2.place(relx=0.7, rely=0.8, height=31, width=94)
 
 	Buttonback = Button(text="Back",command=back)
@@ -112,12 +105,12 @@ def decode():
 	dec=Tk()
 	dec.attributes("-fullscreen", True)
 	dec.wm_attributes('-transparentcolor')
-	img=ImageTk.PhotoImage(Image.open("bg2.jpg"))
-	fontl = tkFont.Font(family='Algerian', size=32)
+	img=ImageTk.PhotoImage(Image.open("bg_image.jpg"))
+	fontl = tkFont.Font(family='Bahnschrift', size=32)
 	label1=Label(dec,image=img)
 	label1.pack()
 
-	LabelTitle=Label(text="DECODE",bg="blue",fg="white",width=20)
+	LabelTitle=Label(text="Decode Image",bg="#311B92",fg="white",width=20)
 	LabelTitle['font']=fontl
 	LabelTitle.place(relx=0.6, rely=0.1)
 
@@ -159,16 +152,14 @@ def decode():
 	Button2 = Button(text="Openfile",command=openfile)
 	Button2.place(relx=0.7, rely=0.2, height=31, width=94)
 
-	Button2 = Button(text="DECODE",command=deimg)
+	Button2 = Button(text="Decode",command=deimg)
 	Button2.place(relx=0.7, rely=0.8, height=31, width=94)
 	
 
 
 	def back():
 		dec.destroy()
-		#execfile('image steganography using lsb.py')
-		#os.system('python imagesteganographyusinglsb.py')
-		Popen('python steganography.py')
+		Popen('python image.py')
 
 	Buttonback = Button(text="Back",command=back)
 	Buttonback.place(relx=0.7, rely=0.85, height=31, width=94)
@@ -177,29 +168,31 @@ def decode():
 
 #main program
 main=Tk()
-main.title('Enc & Dec Panel ')
-#main.geometry("1300x750")
+main.title('Steganography')
 main.attributes("-fullscreen", True)
-fontl = tkFont.Font(family='Algerian', size=32)
+fontl = tkFont.Font(family='Bahnschrift', size=32)
 
 global image1
-image1=ImageTk.PhotoImage(Image.open("bg1.jpg"))
-label=Label(main,text="lalal",image=image1)
+image1=ImageTk.PhotoImage(Image.open("bg_image.jpg"))
+label=Label(main,text="image",image=image1)
 label.pack()
 
-encbutton=Button(text='Encode',fg="white",bg="black",width=20,command=encode)
+encbutton=Button(text='Encode',fg="Black",bg="#fff",width=20,command=encode)
 encbutton['font'] =fontl 
 encbutton.place(relx=0.6,rely=0.3)
+encbutton.config(borderwidth=0, bd=0)
 
 
-decbutton=Button(text='Decode',fg="white",bg="black",width=20,command=decode)
+decbutton=Button(text='Decode',fg="Black",bg="#fff",width=20,command=decode)
 decbutton['font'] =fontl 
 decbutton.place(relx=0.6,rely=0.5)
+decbutton.config(borderwidth=0, bd=0)
 
 def exit():
 	main.destroy()
 
-closebutton=Button(text='EXIT',fg="white",bg="red",width=20,command=exit)
+closebutton=Button(text='Exit',fg="black",bg="#F44336",width=20,command=exit)
 closebutton['font'] =fontl 
 closebutton.place(relx=0.6,rely=0.7)
+closebutton.config(borderwidth=0, bd=0)
 main.mainloop()
